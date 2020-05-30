@@ -1,5 +1,4 @@
 #include<stdio.h>
-//#include<conio.h>
 #include<stdlib.h>
 void turnx (int,char,int ar[3][3]);
 int checkwin(int ar[3][3],char,int,int);
@@ -9,13 +8,13 @@ int main()
 	int i=0,j=0,place=0;
 	int n=0,f[3][3]={0,0,0,0,0,0,0,0,0},m[9];
 	char ch;
-	//clrscr();
 	system("CLS");
 do
 {
 	int imp[3][3]={{1,2,3},{4,5,6},{7,8,9}};
 	int player=0,layer=0,k=0;
 	char play='y';
+	//The order in which the players should play. The numbers till 9 are allowed
 	printf("\t\t\t--TIC-TAC-TOE--\n");
 	printf("The order is:\n");
 	for(i=0;i<3;i++)
@@ -30,12 +29,15 @@ do
 		printf("\n");
 	}
 	printf("\t\t\t|---|---|---|\n");
+	//Enter the player number and accordingly you will be assigned X or O
 	printf("\nEnter 1 for player 1 (X) or 2 for player 2 (O):");
 	scanf("%d",&player);
+	//Play as O
 	if(player==1)
 	{
 		n=0;
 		play='X';
+		//Place X in the order
 		printf("You are player 1 (x)");
 		while(n < 9)
 		{
@@ -43,10 +45,11 @@ do
 			{
 				play='X';
 				layer=1;
+				//Place X in the order
 				printf("\nEnter the number where you want to place %c :",play);
 				scanf("%d",&place);
-				//clrscr();
 				system("CLS");
+				//If the number is taken or invalid this part will tell you
 				m[n]=place;
 				for(i=-1;i<n;i++)
 				{
@@ -57,16 +60,18 @@ do
 						break;
 					}
 				}
+				//Assign the position to X 
 				turnx(place,play,imp);
 			}
 			else
 			{
 				play='O';
 				layer=2;
+				//Place O in the order
 				printf("\nEnter the number where you want to place %c :",play);
 				scanf("%d",&place);
-				//clrscr();
 				system("CLS");
+				//If the number is taken or invalid this part will tell you
 				m[n]=place;
 				for(i=0;i<n;i++)
 				{
@@ -77,9 +82,12 @@ do
 						break;
 					}
 				}
+				//The position will be assigned to O
 				turnx(place,play,imp);
 			}
+			//To see if anyone won the game or not
 			k=checkwin(imp,play,layer,k);
+			//To see if match is draw if no one won
 			if(k==1)
 			{
 				break;
@@ -91,10 +99,12 @@ do
 			printf("\n\n\t\t\t The game is draw!!!");
 		}
 	}
+	//Play as O
 	else if (player==2)
 	{
 		n=0;
 		play='O';
+		//Place O in the order
 		printf("You have chosen player 2 (%c)",play);
 		while(n<9)
 		{
@@ -102,10 +112,11 @@ do
 			{
 				play='O';
 				layer=2;
+				//Place O in the order
 				printf("\nEnter the number where you want to place %c :",play);
 				scanf("%d",&place);
-				//clrscr();
 				system("CLS");
+				//This part check whether the entered number is valid or not
 				m[n]=place;
 				for(i=-1;i<n;i++)
 				{
@@ -116,16 +127,18 @@ do
 						break;
 					}
 				}
+				//If the part is valid then O will be positioned
 				turnx(place,play,imp);
 			}
 			else
 			{
 				play='X';
 				layer=1;
+				//Place X in order
 				printf("\nEnter the number where you want to place %c :",play);
 				scanf("%d",&place);
-				//clrscr();
 				system("CLS");
+				//Check whether the number entered is valid or not
 				m[n]=place;
 				for(i=0;i<n;i++)
 				{
@@ -136,9 +149,12 @@ do
 						break;
 					}
 				}
+				//If the number is valid then the postion is assigned to X
 				turnx(place,play,imp);
 			}
+			//To see if anyone won
 			k=checkwin(imp,play,layer,k);
+			//To see if match is draw if no one won
 			if(k==1)
 			{
 				break;
@@ -156,11 +172,10 @@ do
 	}
 	printf("\n\n\n\nDo you want to play again? [y/n]:");
 	scanf("%s",&ch);
-	//clrscr();
 	system("CLS");
 }while(ch=='y' || ch=='Y');
-	//getch();
 }
+//The procedure to assign the value of X or O to the number
 void turnx(int a,char c,int ar[3][3])
 {
        int i,j;
@@ -172,7 +187,8 @@ void turnx(int a,char c,int ar[3][3])
 			{
 				if(a!=ar[i][j])
 				{
-					if(ar[i][j]!=1&&ar[i][j]!=2&&ar[i][j]!=3&&ar[i][j]!=4&&ar[i][j]!=5&&ar[i][j]!=6&&ar[i][j]!=7&&ar[i][j]!=8&&ar[i][j]!=9)
+					//If the number is 9 The character of the ascii is printed
+					if(ar[i][j] >=10)
 					{
 						printf("| %c ",ar[i][j]);
 					}
@@ -181,6 +197,7 @@ void turnx(int a,char c,int ar[3][3])
 						printf("| %d ",ar[i][j]);
 					}
 				}
+				//Here the value is assigned
 				else
 				{
 					ar[i][j]=c;
@@ -192,6 +209,7 @@ void turnx(int a,char c,int ar[3][3])
 		}
 		printf("\t\t\t|---|---|---|");
 	}
+//To see if any one wins
 int checkwin(int ar[3][3],char c,int a,int k)
 {
 	int i,j;

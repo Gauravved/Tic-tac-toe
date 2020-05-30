@@ -32,7 +32,7 @@ do
 	//Enter the player number and accordingly you will be assigned X or O
 	printf("\nEnter 1 for player 1 (X) or 2 for player 2 (O):");
 	scanf("%d",&player);
-	//Play as O
+	//Play as X
 	if(player==1)
 	{
 		n=0;

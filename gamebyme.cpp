@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<windows.h>
 void turnx (int,char,int ar[3][3]);
 int checkwin(int ar[3][3],char,int,int);
 int main()
@@ -9,12 +10,30 @@ int main()
 	int n=0,f[3][3]={0,0,0,0,0,0,0,0,0},m[9];
 	char ch;
 	system("CLS");
-do
-{
+	int pass=0,s=0;
+	lable:
+	system("CLS");
+	//Enter correct password to enter
+	printf("Enter the password:");
+	scanf("%d",&pass);
+	system("CLS");
+	if(pass==1353)
+	{
+		//The loading screen
+		printf("\n\n\n\n\n\n\n\t\t\t\t\t **TIC-TAC-TOE** ");
+		printf("\n\n\t\t Loading");
+		for(i=0;i<3;i++)
+		{
+			printf(".",i);
+			Sleep(1000);
+		}
+		system("CLS");
+	do
+	{
 	int imp[3][3]={{1,2,3},{4,5,6},{7,8,9}};
 	int player=0,layer=0,k=0;
 	char play='y';
-	//The order in which the players should play. The numbers till 9 are allowed
+	//The order in the player are allowed to play
 	printf("\t\t\t--TIC-TAC-TOE--\n");
 	printf("The order is:\n");
 	for(i=0;i<3;i++)
@@ -29,15 +48,14 @@ do
 		printf("\n");
 	}
 	printf("\t\t\t|---|---|---|\n");
-	//Enter the player number and accordingly you will be assigned X or O
+	//Enter the player you want
 	printf("\nEnter 1 for player 1 (X) or 2 for player 2 (O):");
 	scanf("%d",&player);
-	//Play as X
+	//If player is X
 	if(player==1)
 	{
 		n=0;
 		play='X';
-		//Place X in the order
 		printf("You are player 1 (x)");
 		while(n < 9)
 		{
@@ -45,11 +63,11 @@ do
 			{
 				play='X';
 				layer=1;
-				//Place X in the order
+				//Enter the postion for x
 				printf("\nEnter the number where you want to place %c :",play);
 				scanf("%d",&place);
 				system("CLS");
-				//If the number is taken or invalid this part will tell you
+				//To check whether the postion entered  is apropriate or not
 				m[n]=place;
 				for(i=-1;i<n;i++)
 				{
@@ -60,18 +78,18 @@ do
 						break;
 					}
 				}
-				//Assign the position to X 
+				//If the postion is appropriate X is assigned the value of it
 				turnx(place,play,imp);
 			}
 			else
 			{
 				play='O';
 				layer=2;
-				//Place O in the order
+				//Enter the Position of O
 				printf("\nEnter the number where you want to place %c :",play);
 				scanf("%d",&place);
 				system("CLS");
-				//If the number is taken or invalid this part will tell you
+				//To check whether the enetered number is appropriate or not
 				m[n]=place;
 				for(i=0;i<n;i++)
 				{
@@ -82,29 +100,28 @@ do
 						break;
 					}
 				}
-				//The position will be assigned to O
+				//If the number is appropriate the O is assigned to the postion
 				turnx(place,play,imp);
 			}
-			//To see if anyone won the game or not
+			//To check whether anyone won
 			k=checkwin(imp,play,layer,k);
-			//To see if match is draw if no one won
 			if(k==1)
 			{
 				break;
 			}
 			n++;
 		}
+		//To check if the game draw ate the end after the loop breaks
 		if(k!=1)
 		{
 			printf("\n\n\t\t\t The game is draw!!!");
 		}
 	}
-	//Play as O
+	//If player is O
 	else if (player==2)
 	{
 		n=0;
 		play='O';
-		//Place O in the order
 		printf("You have chosen player 2 (%c)",play);
 		while(n<9)
 		{
@@ -112,11 +129,11 @@ do
 			{
 				play='O';
 				layer=2;
-				//Place O in the order
+				//Enter the postion to O
 				printf("\nEnter the number where you want to place %c :",play);
 				scanf("%d",&place);
 				system("CLS");
-				//This part check whether the entered number is valid or not
+				//To check if the postion is Appropriate or not
 				m[n]=place;
 				for(i=-1;i<n;i++)
 				{
@@ -127,18 +144,18 @@ do
 						break;
 					}
 				}
-				//If the part is valid then O will be positioned
+				//If the position is appropriate O is Assigned the value
 				turnx(place,play,imp);
 			}
 			else
 			{
 				play='X';
 				layer=1;
-				//Place X in order
+				//Enter the position for X
 				printf("\nEnter the number where you want to place %c :",play);
 				scanf("%d",&place);
 				system("CLS");
-				//Check whether the number entered is valid or not
+				//To check if postion is Appropriate or not
 				m[n]=place;
 				for(i=0;i<n;i++)
 				{
@@ -149,18 +166,18 @@ do
 						break;
 					}
 				}
-				//If the number is valid then the postion is assigned to X
+				//If the position is appropriate X is assigned to the value 
 				turnx(place,play,imp);
 			}
 			//To see if anyone won
 			k=checkwin(imp,play,layer,k);
-			//To see if match is draw if no one won
 			if(k==1)
 			{
 				break;
 			}
 			n++;
 		}
+		//To check if the game is draw or not after the loop ends
 		if(k!=1)
 		{
 			printf("\n\n\t\t\t The game is draw!!!");
@@ -170,12 +187,36 @@ do
 	{
 		printf("Enter appropriate number");
 	}
+	//If you want to play again
 	printf("\n\n\n\nDo you want to play again? [y/n]:");
 	scanf("%s",&ch);
 	system("CLS");
-}while(ch=='y' || ch=='Y');
+	}while(ch=='y' || ch=='Y');
 }
-//The procedure to assign the value of X or O to the number
+//If the password Entered is incorrect
+	else if(pass!=1353)
+	{
+		s++;
+		if(s<3)
+		{
+			goto lable;
+		}
+		//If you have tried 3 time you will have to wait for 30 seconds
+		else if(s>=3)
+		{
+			for(i=30;i>0;i--)
+			{
+				system("CLS");
+				printf("You have tried 3 times");
+				printf("\nPlease wait for %d seconds",i);
+				Sleep(1000);
+			}
+			goto lable;
+		}
+		}
+		return 0;
+	}
+///Logic to assign the position to X or O
 void turnx(int a,char c,int ar[3][3])
 {
        int i,j;
@@ -187,8 +228,7 @@ void turnx(int a,char c,int ar[3][3])
 			{
 				if(a!=ar[i][j])
 				{
-					//If the number is 9 The character of the ascii is printed
-					if(ar[i][j] >=10)
+					if(ar[i][j]!=1&&ar[i][j]!=2&&ar[i][j]!=3&&ar[i][j]!=4&&ar[i][j]!=5&&ar[i][j]!=6&&ar[i][j]!=7&&ar[i][j]!=8&&ar[i][j]!=9)
 					{
 						printf("| %c ",ar[i][j]);
 					}
@@ -197,7 +237,6 @@ void turnx(int a,char c,int ar[3][3])
 						printf("| %d ",ar[i][j]);
 					}
 				}
-				//Here the value is assigned
 				else
 				{
 					ar[i][j]=c;
@@ -209,7 +248,7 @@ void turnx(int a,char c,int ar[3][3])
 		}
 		printf("\t\t\t|---|---|---|");
 	}
-//To see if any one wins
+//To see if anyone won the game  
 int checkwin(int ar[3][3],char c,int a,int k)
 {
 	int i,j;

@@ -222,13 +222,13 @@ void turnx(int a,char c,int ar[3][3])
        int i,j;
        for(i=0;i<3;i++)
 		{
-			printf("\t\t\t|---|---|---|\n");
+			printf("\t\t\t|---|---|---|\n"); 
 			printf("\t\t\t");
 			for(j=0;j<3;j++)
 			{
 				if(a!=ar[i][j])
 				{
-					if(ar[i][j]!=1&&ar[i][j]!=2&&ar[i][j]!=3&&ar[i][j]!=4&&ar[i][j]!=5&&ar[i][j]!=6&&ar[i][j]!=7&&ar[i][j]!=8&&ar[i][j]!=9)
+					if(ar[i][j] >=10)
 					{
 						printf("| %c ",ar[i][j]);
 					}

@@ -7,7 +7,7 @@ int main()
 {
 
 	int i=0,j=0,place=0;
-	int n=0,f[3][3]={0,0,0,0,0,0,0,0,0},m[9];
+	int n=0,m[9];
 	char ch;
 	system("CLS");
 	int pass=0,s=0;

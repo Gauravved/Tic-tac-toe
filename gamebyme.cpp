@@ -71,7 +71,7 @@ int main()
 				m[n]=place;
 				for(i=-1;i<n;i++)
 				{
-					if(m[i]==m[n] || place>=10)
+					if(m[i]==m[n] || place>=10 ||place==0)
 					{
 						printf("Enter appropriate number. The number is either taken or invalid\n\n");
 						n--;
@@ -93,7 +93,7 @@ int main()
 				m[n]=place;
 				for(i=0;i<n;i++)
 				{
-					if(m[i]==m[n] || place>=10)
+					if(m[i]==m[n] || place>=10 ||place==0)
 					{
 						printf("Enter appropriate number. The number is either taken or invalid\n\n");
 						n--;
@@ -137,7 +137,7 @@ int main()
 				m[n]=place;
 				for(i=-1;i<n;i++)
 				{
-					if(m[i]==m[n] || place>=10)
+					if(m[i]==m[n] || place>=10 ||place==0)
 					{
 						printf("Enter appropriate number. The number is either taken or invalid\n\n");
 						n--;
@@ -159,7 +159,7 @@ int main()
 				m[n]=place;
 				for(i=0;i<n;i++)
 				{
-					if(m[i]==m[n] || place>=10)
+					if(m[i]==m[n] || place>=10 ||place==0)
 					{
 						printf("Enter appropriate number. The number is either taken or invalid\n\n");
 						n--;
